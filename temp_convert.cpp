@@ -13,14 +13,16 @@ void show_results(double f_temp, double c_temp);
 //Displays output.
 //Assumes that f_temp is equivalent to c_temp.
 
+void get_input(double& f_temp);
+//A call to this function will set the variable f_temp to a value read from the keyboard
+
 int main()
 {
 	double f_temp, c_temp;
 
 	initialize_screen();
-	cout << "I will convert a Fahrenheit temperature to Celsius.\n"
-	     << "Enter a temperature in Fahrenheit: ";
-	cin >> f_temp;
+
+	get_input(f_temp);
 
 	initialize_screen();
 
@@ -28,6 +30,13 @@ int main()
 
 	show_results(f_temp, c_temp);
 	return 0;
+}
+
+void get_input(double& f_temp)
+{
+	cout << "I will convert a Fahrenheit temperature to Celsius.\n"
+	     << "Enter a temperature in Fahrenheit: ";
+	cin >> f_temp;
 }
 
 void initialize_screen()
