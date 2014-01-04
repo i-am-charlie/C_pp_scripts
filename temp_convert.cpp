@@ -38,15 +38,15 @@ void initialize_screen()
 
 void show_results(double f_temp, double c_temp)
 {
-	cout.set(ios::fixed);
-	cout.set(ios::showpoint);
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
 	cout.precision(1);
 	cout << f_temp << " degrees Fahrenheit is equivalent to\n"
 	     << c_temp << " degrees Celsius.\n";
 	return;
 }
 
-double celsius(f_temp)
+double celsius(double fahrenheit)
 {
-	return (5.0/9) * (f_temp - 32);
+	return (5.0/9) * (fahrenheit - 32);
 }
