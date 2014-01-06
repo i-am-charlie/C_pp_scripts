@@ -1,6 +1,8 @@
 //This program simply reads in 3 numbers from infile.dat and sums them,
 //writing the ouput to the file outfile.dat
 #include <fstream>
+#include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 int main()
@@ -9,7 +11,18 @@ int main()
 	ofstream out_stream;
 
 	in_stream.open("infile.dat");
+	if (in_stream.fail())
+	{
+		cout << "Input file opening has failed.\n";
+		exit(1);
+	}
+
 	out_stream.open("outfile.dat");
+	if (out_stream.fail())
+	{
+		cout << "Output file opening has failed.\n";
+		exit(1);
+	}
 
 	int first, second, third;
 	in_stream >> first >> second >> third;
