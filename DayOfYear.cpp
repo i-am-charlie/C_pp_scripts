@@ -6,6 +6,9 @@ using namespace std;
 class DayOfYear
 {
 public:
+	friend bool equal(DayOfYear date1, DayOfYear date2);
+	//returns true if date1 and date2 represent the same date
+	
 	DayOfYear(int the_month, int the_day);
 
 	DayOfYear();
@@ -24,9 +27,6 @@ private:
 	int month;
 	int day;
 };
-
-bool equal(DayOfYear date1, DayOfYear date2);
-//returns true if date1 and date2 represent the same date
 
 int main()
 {
@@ -48,8 +48,8 @@ int main()
 
 bool equal(DayOfYear date1, DayOfYear date2)
 {
-	return ( date1.get_month() == date2.get_month() &&
-				date1.get_day() == date2.get_day() );
+	return ( date1.month == date2.month &&
+				date1.day == date2.day );
 }
 
 DayOfYear::DayOfYear(int the_month, int the_day)
