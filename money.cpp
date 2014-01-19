@@ -9,10 +9,10 @@ using namespace std;
 class Money
 {
 public:
-	friend Money add(const Money& amount1, const Money& amount2);
+	friend Money operator +(const Money& amount1, const Money& amount2);
 	//returns the sum of the values of amount1 and amount2
 	
-	friend bool equal(const Money& amount1, const Money& amount2);
+	friend bool operator ==(const Money& amount1, const Money& amount2);
 	//returns true if amount1 and amount2 are the same value
 	
 	Money(long dollars, int cents);
@@ -37,41 +37,36 @@ int digit_to_int(char c);
 
 int main()
 {
-	Money your_amount, my_amount(10), our_amount;
-	cout << "Enter an amount of money: ";
-	your_amount.input(cin);
-	cout << "Your amount is: ";
-	your_amount.output(cout);
+	Money cost(1, 50), tax(0, 50), total;
+	total = cost + tax;
+
+	cout << "cost = ";
+	cost.output(cout);
 	cout << endl;
-	cout << "My amount is: ";
-	my_amount.output(cout);
+	cout << "tax = ";
+	tax.output(cout);
+	cout << endl;
+	cout << "total bill = ";
+	total.output(cout);
 	cout << endl;
 
-	if( equal(your_amount, my_amount) )
-		cout << "We have the same amounts.\n";
+	if( cost == tax )
+		cout << "Move to another state.\n";
 	else
-		cout << "One of us is richer than the other.\n";
+		cout << "Things seem normal.\n";
 
-	our_amount = add(your_amount, my_amount);
-	your_amount.output(cout);
-	cout << " + ";
-	my_amount.output(cout);
-	cout << " equals ";
-	our_amount.output(cout);
-	cout << endl;
-	
 	return 0;
 }
 
 
-Money add(const Money& amount1, const Money& amount2)
+Money operator +(const Money& amount1, const Money& amount2)
 {
 	Money temp;
 	temp.all_cents = amount1.all_cents + amount2.all_cents;
 	return temp;
 }
 
-bool equal(const Money& amount1, const Money& amount2)
+bool operator ==(const Money& amount1, const Money& amount2)
 {
 	return (amount1.all_cents == amount2.all_cents);
 }
