@@ -9,10 +9,10 @@ using namespace std;
 class Money
 {
 public:
-	friend Money add(Money amount1, Money amount2);
+	friend Money add(const Money& amount1, const Money& amount2);
 	//returns the sum of the values of amount1 and amount2
 	
-	friend bool equal(Money amount1, Money amount2);
+	friend bool equal(const Money& amount1, const Money& amount2);
 	//returns true if amount1 and amount2 are the same value
 	
 	Money(long dollars, int cents);
@@ -21,9 +21,9 @@ public:
 	Money();
 	//initializes to $0.00
 	
-	double get_value();
+	double get_value() const;
 	void input(istream& ins);
-	void output(ostream& outs);
+	void output(ostream& outs) const;
 
 private:
 	long all_cents;
@@ -64,14 +64,14 @@ int main()
 }
 
 
-Money add(Money amount1, Money amount2)
+Money add(const Money& amount1, const Money& amount2)
 {
 	Money temp;
 	temp.all_cents = amount1.all_cents + amount2.all_cents;
 	return temp;
 }
 
-bool equal(Money amount1,Money  amount2)
+bool equal(const Money& amount1, const Money& amount2)
 {
 	return (amount1.all_cents == amount2.all_cents);
 }
@@ -91,7 +91,7 @@ Money::Money()
 	all_cents = 0;
 }
 
-double Money::get_value()
+double Money::get_value() const
 {
 	return (all_cents * 0.01);
 }
@@ -133,7 +133,7 @@ void Money::input(istream& ins)
 
 
 //uses stdlib.h and iostream
-void Money::output(ostream& outs)
+void Money::output(ostream& outs) const
 {
 	long positive_cents, dollars, cents;
 	positive_cents = labs(all_cents);
