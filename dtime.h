@@ -1,6 +1,9 @@
 //this is the header file for the class DigitalTime.
 //The values of this class are input and output in 24hr notation,
 //as in 9:30 for 9:30AM and 14:40 for 2:40PM
+#ifndef DTIME_H
+#define DTIME_H
+
 #include <iostream>
 
 using namespace std;
@@ -24,3 +27,5 @@ private:
 	int hour;
 	int minute;
 };
+
+#endif  //DTIME_H
